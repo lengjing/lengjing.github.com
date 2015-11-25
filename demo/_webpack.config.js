@@ -1,17 +1,19 @@
 var webpack = require("webpack");
 var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-var fs = require("fs");
-fs.read()
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: ["webpack/hot/dev-server",path.resolve(__dirname,"app/main.js")],
+    entry: {
+      "index": ["webpack/hot/dev-server",path.resolve(__dirname,"app/main.js")],
+      "list": ["webpack/hot/dev-server",path.resolve(__dirname,"app/main.js")],
+      "detail": ["webpack/hot/dev-server",path.resolve(__dirname,"app/main.js")]
+    },
     output: {
         path: __dirname,
-        filename: "bundle.js",
+        filename: "[name].js",
         publishPath: "/build/",
-        vender: ['react']
+        vender: []
     },
     resolve:{
       alias: {
@@ -48,6 +50,7 @@ module.exports = {
     plugins: [
       new webpack.optimize.CommonsChunkPlugin('common.js'),
       new ExtractTextPlugin("[name].css"),
+      new HtmlWebpackPlugin()
     ],
     devtool: 'source-map'
 }
