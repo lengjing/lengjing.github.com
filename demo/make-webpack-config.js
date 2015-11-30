@@ -78,19 +78,19 @@ module.exports = function(options){
         );
         plugins.push(new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 }));
     } else {
-        plugins.push(new StatsPlugin(path.join(__dirname, "build", "stats.json"), {
-            chunkModules: true,
-            exclude: excludeFromStats
-        }));
+        //plugins.push(new StatsPlugin(path.join(__dirname, "build", "stats.json"), {
+        //    chunkModules: true,
+        //    exclude: excludeFromStats
+        //}));
     }
     if(options.commonsChunk) {
         plugins.push(new webpack.optimize.CommonsChunkPlugin("commons", "commons.js" + (options.longTermCaching && !options.prerender ? "?[chunkhash]" : "")));
     }
     var asyncLoader = {
-        test: require("./app/route-handlers/async").map(function(name) {
-            return path.join(__dirname, "app", "route-handlers", name);
-        }),
-        loader: options.prerender ? "react-proxy-loader/unavailable" : "react-proxy-loader"
+        //test: require("./app/route-handlers/async").map(function(name) {
+        //    return path.join(__dirname, "app", "route-handlers", name);
+        //}),
+        //loader: options.prerender ? "react-proxy-loader/unavailable" : "react-proxy-loader"
     };
 
 
@@ -135,7 +135,8 @@ module.exports = function(options){
         output: output,
         target: options.prerender ? "node" : "web",
         module: {
-            loaders: [asyncLoader].concat(loadersByExtension(loaders)).concat(loadersByExtension(stylesheetLoaders)).concat(additionalLoaders)
+            //loaders: [asyncLoader].concat(loadersByExtension(loaders)).concat(loadersByExtension(stylesheetLoaders)).concat(additionalLoaders)
+            loaders: loadersByExtension(loaders).concat(loadersByExtension(stylesheetLoaders))
         },
         devtool: options.devtool,
         debug: options.debug,
@@ -160,7 +161,7 @@ module.exports = function(options){
     };
 }
 function getEntry(options){
-    var _path = path.resolve(process.cwd(),options.path || "demo");
+    var _path = path.resolve(process.cwd(),options.path || "app");
     var names = fs.readdirSync(_path);
     var entry = {};
 
@@ -176,3 +177,30 @@ function getEntry(options){
 function readdir(){
 
 }
+function extsToRegExp(exts) {
+    return new RegExp("\\.(" + exts.map(function(ext) {
+              return ext.replace(/\./g, "\\.");
+          }).join("|") + ")(\\?.*)?$");
+}
+function loadersByExtension(obj) {
+    var loaders = [];
+    Object.keys(obj).forEach(function(key) {
+        var exts = key.split("|");
+        var value = obj[key];
+        var entry = {
+            extensions: exts,
+            test: extsToRegExp(exts)
+        };
+        if(Array.isArray(value)) {
+            entry.loaders = value;
+        } else if(typeof value === "string") {
+            entry.loader = value;
+        } else {
+            Object.keys(value).forEach(function(valueKey) {
+                entry[valueKey] = value[valueKey];
+            });
+        }
+        loaders.push(entry);
+    });
+    return loaders;
+};
