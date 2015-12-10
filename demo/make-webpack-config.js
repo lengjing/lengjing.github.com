@@ -162,21 +162,26 @@ module.exports = function(options){
 }
 function getEntry(options){
     var _path = path.resolve(process.cwd(),options.path || "app");
-    var names = fs.readdirSync(_path);
     var entry = {};
 
-    names.forEach(function(name){
-        var matched = name.match(/(.+)\.js$/);
-        if(matched){
-            entry[matched[1]] = options.prerender ? ["webpack/hot/dev-server",name]: [name]
-        }
-    })
+    function loop(pah){
+        var names = fs.readdirSync(pah);
+        names.forEach(function(name){
+            var _pah = path.join(pah,name);
+            if(fs.statSync(_pah).isDirectory()){
+                loop(_pah)
+            }else{
+                var matched = name.match(/(.+)\.js$/);
+                if(matched){
+                    entry[matched[1]] = options.prerender ? ["webpack/hot/dev-server",_pah]: [_pah]
+                }
+            }
+        })
+    }
+    loop(_path);
     return entry;
 }
 
-function readdir(){
-
-}
 function extsToRegExp(exts) {
     return new RegExp("\\.(" + exts.map(function(ext) {
               return ext.replace(/\./g, "\\.");

@@ -53,6 +53,16 @@ module.exports = {
     devtool: 'source-map'
 }
 
-function getEntry(){
-    process.cwd()
+function getEntry(options){
+    var _path = path.resolve(process.cwd(),options.path || "zt");
+    var names = fs.readdirSync(_path);
+    var entry = {};
+
+    names.forEach(function(name){
+        var matched = name.match(/(.+)\.js$/);
+        if(matched){
+            entry[matched[1]] = options.prerender ? ["webpack/hot/dev-server",name]: [name]
+        }
+    })
+    return entry;
 }
