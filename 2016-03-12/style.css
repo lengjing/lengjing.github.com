@@ -1,0 +1,99 @@
+*{margin: 0;padding: 0;}
+body{font: 12px/1.5 "Microsoft YaHei"}
+.wrap{
+  background: url("./bg.jpg") repeat;
+  padding: 75px 120px;
+}
+.profile{
+  width: 360px;
+  margin: 0 auto;
+  padding-top: 40px;
+  border-radius: 4px;
+  background-image: linear-gradient(to bottom, #e7decd 30%, #6a6559 30%);
+  box-shadow: 0 10px 24px -10px #000;
+  position: relative;
+}
+.profile:after{
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  width: 25px;
+  height: 18px;
+  margin-left: -12px;
+  background: url("data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAZAAA/+4ADkFkb2JlAGTAAAAAAf/bAIQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQICAgICAgICAgICAwMDAwMDAwMDAwEBAQEBAQECAQECAgIBAgIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMD/8AAEQgABwAHAwERAAIRAQMRAf/EAFoAAQAAAAAAAAAAAAAAAAAAAAoBAQEAAAAAAAAAAAAAAAAAAAYHEAACAwEBAQAAAAAAAAAAAAABAhEDBAUhBhEAAQQDAQAAAAAAAAAAAAAAEQABIQJBgRJC/9oADAMBAAIRAxEAPwBfBr+jUAdrpXa7WqUcd7OXVifJhkjKqLDLsCu0h4CMV8UezMLPdx0TiEqjztf/2Q==")
+}
+.profile .profile__img{
+  width: 170px;
+  height: 170px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.profile .profile__img img{
+  border: 5px solid #e7decd;
+  border-radius: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.profile .profile__info{
+  text-align: center;
+  margin: 20px 0;
+  color: #fff;
+}
+.profile .profile__info__name{
+  font-size: 24px;
+  font-weight: normal;
+}
+.profile .profile__info__meta{
+  color: #fff;
+  font-size: 16px;
+}
+.profile .profile__fn{
+  text-align: center;
+}
+.profile .profile__attr{
+  display: -webkit-box;
+  display: flex;
+  margin-top: 30px;
+  border-top: 1px solid #252525;
+  box-shadow: inset 0 1px rgba(255,255,255,.2);
+}
+.profile .profile__attr .item{
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  -webkit-box-flex: 1;
+  flex:1;
+  border-right: 1px solid #252525;
+  box-shadow: inset -1px 0 rgba(255,255,255,.2);
+  color: #fff;
+  font-size: 14px;
+}
+.profile .profile__attr .item:last-child{
+  border: 0;
+  box-shadow: none;
+}
+.profile .profile__attr .item b{
+  color: #2e2c27;
+  font-size: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.button{
+  border: 0;
+  line-height: 2.4rem;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: .25rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 4.5rem;
+  box-shadow: inset 0 1px #ffaf94,0 0 1px #000;
+  background-color: #ff7a4d;
+}
