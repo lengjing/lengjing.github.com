@@ -1,0 +1,34 @@
+body,p,ul,ol,li{margin: 0;padding: 0;}
+
+body{font: 12px/1.2 Menlo, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif}
+
+html,body{
+    height: 100%;
+}
+.hangman{
+    height: 30%;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #ccc;
+    padding: 15px;
+    position: relative;
+}
+.hangman:before{
+    content: ' ';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    height: 15px;
+    box-shadow: inset #000 0 5px 10px;
+    width: 100%;
+}
+.hangman .jquery-console-inner{
+    height: 100%;
+    overflow-y: auto;
+}
+.jquery-console-cursor{
+    background-color: #eee;
+    color: #eee;
+    font-weight: bold;
+}
