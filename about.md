@@ -3,13 +3,9 @@ layout: page
 title: About
 permalink: /about/
 ---
+我不生产代码，我只是代码的搬运工。
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+```
+写字楼里写字间，写字间里程序员；
+程序人员写程序，又拿程序换酒钱。
+```
