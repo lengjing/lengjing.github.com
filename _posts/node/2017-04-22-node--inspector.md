@@ -4,7 +4,6 @@ title:  "node --inspect与使用node-inspector的区别"
 date:   2017-04-22 17:02:42 +0800
 categories: node
 ---
-# node --inspect 和使用 node-inspector的区别
 
 谷歌Chrome团队的开发者给node项目发了一个[pr](https://github.com/nodejs/node/pull/6792)名为“add v8_inspector support”
 
